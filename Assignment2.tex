@@ -1,0 +1,1621 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Assignment2.rmd},
+  pdfauthor={Phanisa},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Assignment2.rmd}
+\author{Phanisa}
+\date{2024-09-15}
+
+\begin{document}
+\maketitle
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(readr)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(gtsummary)}
+\FunctionTok{library}\NormalTok{(knitr)}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\NormalTok{train }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"train.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\#This is the command for call every package that you need to use for
+this code \#command for read the csv file and store in train
+
+This is an example of Titanic data
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{head}\NormalTok{(train))}\CommentTok{\#show the top 10 lines of train data frame}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   PassengerId Survived Pclass
+## 1           1        0      3
+## 2           2        1      1
+## 3           3        1      3
+## 4           4        1      1
+## 5           5        0      3
+## 6           6        0      3
+##                                                  Name    Sex Age SibSp Parch
+## 1                             Braund, Mr. Owen Harris   male  22     1     0
+## 2 Cumings, Mrs. John Bradley (Florence Briggs Thayer) female  38     1     0
+## 3                              Heikkinen, Miss. Laina female  26     0     0
+## 4        Futrelle, Mrs. Jacques Heath (Lily May Peel) female  35     1     0
+## 5                            Allen, Mr. William Henry   male  35     0     0
+## 6                                    Moran, Mr. James   male  NA     0     0
+##             Ticket    Fare Cabin Embarked
+## 1        A/5 21171  7.2500              S
+## 2         PC 17599 71.2833   C85        C
+## 3 STON/O2. 3101282  7.9250              S
+## 4           113803 53.1000  C123        S
+## 5           373450  8.0500              S
+## 6           330877  8.4583              Q
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{table1 }\OtherTok{\textless{}{-}}\NormalTok{ train }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(Survived, Sex) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{tbl\_summary}\NormalTok{(}\AttributeTok{by =}\NormalTok{ Survived)}
+\end{Highlighting}
+\end{Shaded}
+
+\#store the select column in the table1 as table platform and calculate
+form gtsummary function
+
+\#use as pipe for continues input/output'' Table for show selected of
+survived sex column
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(table1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## <div id="ytdgtrwicy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+##   <style>#ytdgtrwicy table {
+##   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+##   -webkit-font-smoothing: antialiased;
+##   -moz-osx-font-smoothing: grayscale;
+## }
+## 
+## #ytdgtrwicy thead, #ytdgtrwicy tbody, #ytdgtrwicy tfoot, #ytdgtrwicy tr, #ytdgtrwicy td, #ytdgtrwicy th {
+##   border-style: none;
+## }
+## 
+## #ytdgtrwicy p {
+##   margin: 0;
+##   padding: 0;
+## }
+## 
+## #ytdgtrwicy .gt_table {
+##   display: table;
+##   border-collapse: collapse;
+##   line-height: normal;
+##   margin-left: auto;
+##   margin-right: auto;
+##   color: #333333;
+##   font-size: 16px;
+##   font-weight: normal;
+##   font-style: normal;
+##   background-color: #FFFFFF;
+##   width: auto;
+##   border-top-style: solid;
+##   border-top-width: 2px;
+##   border-top-color: #A8A8A8;
+##   border-right-style: none;
+##   border-right-width: 2px;
+##   border-right-color: #D3D3D3;
+##   border-bottom-style: solid;
+##   border-bottom-width: 2px;
+##   border-bottom-color: #A8A8A8;
+##   border-left-style: none;
+##   border-left-width: 2px;
+##   border-left-color: #D3D3D3;
+## }
+## 
+## #ytdgtrwicy .gt_caption {
+##   padding-top: 4px;
+##   padding-bottom: 4px;
+## }
+## 
+## #ytdgtrwicy .gt_title {
+##   color: #333333;
+##   font-size: 125%;
+##   font-weight: initial;
+##   padding-top: 4px;
+##   padding-bottom: 4px;
+##   padding-left: 5px;
+##   padding-right: 5px;
+##   border-bottom-color: #FFFFFF;
+##   border-bottom-width: 0;
+## }
+## 
+## #ytdgtrwicy .gt_subtitle {
+##   color: #333333;
+##   font-size: 85%;
+##   font-weight: initial;
+##   padding-top: 3px;
+##   padding-bottom: 5px;
+##   padding-left: 5px;
+##   padding-right: 5px;
+##   border-top-color: #FFFFFF;
+##   border-top-width: 0;
+## }
+## 
+## #ytdgtrwicy .gt_heading {
+##   background-color: #FFFFFF;
+##   text-align: center;
+##   border-bottom-color: #FFFFFF;
+##   border-left-style: none;
+##   border-left-width: 1px;
+##   border-left-color: #D3D3D3;
+##   border-right-style: none;
+##   border-right-width: 1px;
+##   border-right-color: #D3D3D3;
+## }
+## 
+## #ytdgtrwicy .gt_bottom_border {
+##   border-bottom-style: solid;
+##   border-bottom-width: 2px;
+##   border-bottom-color: #D3D3D3;
+## }
+## 
+## #ytdgtrwicy .gt_col_headings {
+##   border-top-style: solid;
+##   border-top-width: 2px;
+##   border-top-color: #D3D3D3;
+##   border-bottom-style: solid;
+##   border-bottom-width: 2px;
+##   border-bottom-color: #D3D3D3;
+##   border-left-style: none;
+##   border-left-width: 1px;
+##   border-left-color: #D3D3D3;
+##   border-right-style: none;
+##   border-right-width: 1px;
+##   border-right-color: #D3D3D3;
+## }
+## 
+## #ytdgtrwicy .gt_col_heading {
+##   color: #333333;
+##   background-color: #FFFFFF;
+##   font-size: 100%;
+##   font-weight: normal;
+##   text-transform: inherit;
+##   border-left-style: none;
+##   border-left-width: 1px;
+##   border-left-color: #D3D3D3;
+##   border-right-style: none;
+##   border-right-width: 1px;
+##   border-right-color: #D3D3D3;
+##   vertical-align: bottom;
+##   padding-top: 5px;
+##   padding-bottom: 6px;
+##   padding-left: 5px;
+##   padding-right: 5px;
+##   overflow-x: hidden;
+## }
+## 
+## #ytdgtrwicy .gt_column_spanner_outer {
+##   color: #333333;
+##   background-color: #FFFFFF;
+##   font-size: 100%;
+##   font-weight: normal;
+##   text-transform: inherit;
+##   padding-top: 0;
+##   padding-bottom: 0;
+##   padding-left: 4px;
+##   padding-right: 4px;
+## }
+## 
+## #ytdgtrwicy .gt_column_spanner_outer:first-child {
+##   padding-left: 0;
+## }
+## 
+## #ytdgtrwicy .gt_column_spanner_outer:last-child {
+##   padding-right: 0;
+## }
+## 
+## #ytdgtrwicy .gt_column_spanner {
+##   border-bottom-style: solid;
+##   border-bottom-width: 2px;
+##   border-bottom-color: #D3D3D3;
+##   vertical-align: bottom;
+##   padding-top: 5px;
+##   padding-bottom: 5px;
+##   overflow-x: hidden;
+##   display: inline-block;
+##   width: 100%;
+## }
+## 
+## #ytdgtrwicy .gt_spanner_row {
+##   border-bottom-style: hidden;
+## }
+## 
+## #ytdgtrwicy .gt_group_heading {
+##   padding-top: 8px;
+##   padding-bottom: 8px;
+##   padding-left: 5px;
+##   padding-right: 5px;
+##   color: #333333;
+##   background-color: #FFFFFF;
+##   font-size: 100%;
+##   font-weight: initial;
+##   text-transform: inherit;
+##   border-top-style: solid;
+##   border-top-width: 2px;
+##   border-top-color: #D3D3D3;
+##   border-bottom-style: solid;
+##   border-bottom-width: 2px;
+##   border-bottom-color: #D3D3D3;
+##   border-left-style: none;
+##   border-left-width: 1px;
+##   border-left-color: #D3D3D3;
+##   border-right-style: none;
+##   border-right-width: 1px;
+##   border-right-color: #D3D3D3;
+##   vertical-align: middle;
+##   text-align: left;
+## }
+## 
+## #ytdgtrwicy .gt_empty_group_heading {
+##   padding: 0.5px;
+##   color: #333333;
+##   background-color: #FFFFFF;
+##   font-size: 100%;
+##   font-weight: initial;
+##   border-top-style: solid;
+##   border-top-width: 2px;
+##   border-top-color: #D3D3D3;
+##   border-bottom-style: solid;
+##   border-bottom-width: 2px;
+##   border-bottom-color: #D3D3D3;
+##   vertical-align: middle;
+## }
+## 
+## #ytdgtrwicy .gt_from_md > :first-child {
+##   margin-top: 0;
+## }
+## 
+## #ytdgtrwicy .gt_from_md > :last-child {
+##   margin-bottom: 0;
+## }
+## 
+## #ytdgtrwicy .gt_row {
+##   padding-top: 8px;
+##   padding-bottom: 8px;
+##   padding-left: 5px;
+##   padding-right: 5px;
+##   margin: 10px;
+##   border-top-style: solid;
+##   border-top-width: 1px;
+##   border-top-color: #D3D3D3;
+##   border-left-style: none;
+##   border-left-width: 1px;
+##   border-left-color: #D3D3D3;
+##   border-right-style: none;
+##   border-right-width: 1px;
+##   border-right-color: #D3D3D3;
+##   vertical-align: middle;
+##   overflow-x: hidden;
+## }
+## 
+## #ytdgtrwicy .gt_stub {
+##   color: #333333;
+##   background-color: #FFFFFF;
+##   font-size: 100%;
+##   font-weight: initial;
+##   text-transform: inherit;
+##   border-right-style: solid;
+##   border-right-width: 2px;
+##   border-right-color: #D3D3D3;
+##   padding-left: 5px;
+##   padding-right: 5px;
+## }
+## 
+## #ytdgtrwicy .gt_stub_row_group {
+##   color: #333333;
+##   background-color: #FFFFFF;
+##   font-size: 100%;
+##   font-weight: initial;
+##   text-transform: inherit;
+##   border-right-style: solid;
+##   border-right-width: 2px;
+##   border-right-color: #D3D3D3;
+##   padding-left: 5px;
+##   padding-right: 5px;
+##   vertical-align: top;
+## }
+## 
+## #ytdgtrwicy .gt_row_group_first td {
+##   border-top-width: 2px;
+## }
+## 
+## #ytdgtrwicy .gt_row_group_first th {
+##   border-top-width: 2px;
+## }
+## 
+## #ytdgtrwicy .gt_summary_row {
+##   color: #333333;
+##   background-color: #FFFFFF;
+##   text-transform: inherit;
+##   padding-top: 8px;
+##   padding-bottom: 8px;
+##   padding-left: 5px;
+##   padding-right: 5px;
+## }
+## 
+## #ytdgtrwicy .gt_first_summary_row {
+##   border-top-style: solid;
+##   border-top-color: #D3D3D3;
+## }
+## 
+## #ytdgtrwicy .gt_first_summary_row.thick {
+##   border-top-width: 2px;
+## }
+## 
+## #ytdgtrwicy .gt_last_summary_row {
+##   padding-top: 8px;
+##   padding-bottom: 8px;
+##   padding-left: 5px;
+##   padding-right: 5px;
+##   border-bottom-style: solid;
+##   border-bottom-width: 2px;
+##   border-bottom-color: #D3D3D3;
+## }
+## 
+## #ytdgtrwicy .gt_grand_summary_row {
+##   color: #333333;
+##   background-color: #FFFFFF;
+##   text-transform: inherit;
+##   padding-top: 8px;
+##   padding-bottom: 8px;
+##   padding-left: 5px;
+##   padding-right: 5px;
+## }
+## 
+## #ytdgtrwicy .gt_first_grand_summary_row {
+##   padding-top: 8px;
+##   padding-bottom: 8px;
+##   padding-left: 5px;
+##   padding-right: 5px;
+##   border-top-style: double;
+##   border-top-width: 6px;
+##   border-top-color: #D3D3D3;
+## }
+## 
+## #ytdgtrwicy .gt_last_grand_summary_row_top {
+##   padding-top: 8px;
+##   padding-bottom: 8px;
+##   padding-left: 5px;
+##   padding-right: 5px;
+##   border-bottom-style: double;
+##   border-bottom-width: 6px;
+##   border-bottom-color: #D3D3D3;
+## }
+## 
+## #ytdgtrwicy .gt_striped {
+##   background-color: rgba(128, 128, 128, 0.05);
+## }
+## 
+## #ytdgtrwicy .gt_table_body {
+##   border-top-style: solid;
+##   border-top-width: 2px;
+##   border-top-color: #D3D3D3;
+##   border-bottom-style: solid;
+##   border-bottom-width: 2px;
+##   border-bottom-color: #D3D3D3;
+## }
+## 
+## #ytdgtrwicy .gt_footnotes {
+##   color: #333333;
+##   background-color: #FFFFFF;
+##   border-bottom-style: none;
+##   border-bottom-width: 2px;
+##   border-bottom-color: #D3D3D3;
+##   border-left-style: none;
+##   border-left-width: 2px;
+##   border-left-color: #D3D3D3;
+##   border-right-style: none;
+##   border-right-width: 2px;
+##   border-right-color: #D3D3D3;
+## }
+## 
+## #ytdgtrwicy .gt_footnote {
+##   margin: 0px;
+##   font-size: 90%;
+##   padding-top: 4px;
+##   padding-bottom: 4px;
+##   padding-left: 5px;
+##   padding-right: 5px;
+## }
+## 
+## #ytdgtrwicy .gt_sourcenotes {
+##   color: #333333;
+##   background-color: #FFFFFF;
+##   border-bottom-style: none;
+##   border-bottom-width: 2px;
+##   border-bottom-color: #D3D3D3;
+##   border-left-style: none;
+##   border-left-width: 2px;
+##   border-left-color: #D3D3D3;
+##   border-right-style: none;
+##   border-right-width: 2px;
+##   border-right-color: #D3D3D3;
+## }
+## 
+## #ytdgtrwicy .gt_sourcenote {
+##   font-size: 90%;
+##   padding-top: 4px;
+##   padding-bottom: 4px;
+##   padding-left: 5px;
+##   padding-right: 5px;
+## }
+## 
+## #ytdgtrwicy .gt_left {
+##   text-align: left;
+## }
+## 
+## #ytdgtrwicy .gt_center {
+##   text-align: center;
+## }
+## 
+## #ytdgtrwicy .gt_right {
+##   text-align: right;
+##   font-variant-numeric: tabular-nums;
+## }
+## 
+## #ytdgtrwicy .gt_font_normal {
+##   font-weight: normal;
+## }
+## 
+## #ytdgtrwicy .gt_font_bold {
+##   font-weight: bold;
+## }
+## 
+## #ytdgtrwicy .gt_font_italic {
+##   font-style: italic;
+## }
+## 
+## #ytdgtrwicy .gt_super {
+##   font-size: 65%;
+## }
+## 
+## #ytdgtrwicy .gt_footnote_marks {
+##   font-size: 75%;
+##   vertical-align: 0.4em;
+##   position: initial;
+## }
+## 
+## #ytdgtrwicy .gt_asterisk {
+##   font-size: 100%;
+##   vertical-align: 0;
+## }
+## 
+## #ytdgtrwicy .gt_indent_1 {
+##   text-indent: 5px;
+## }
+## 
+## #ytdgtrwicy .gt_indent_2 {
+##   text-indent: 10px;
+## }
+## 
+## #ytdgtrwicy .gt_indent_3 {
+##   text-indent: 15px;
+## }
+## 
+## #ytdgtrwicy .gt_indent_4 {
+##   text-indent: 20px;
+## }
+## 
+## #ytdgtrwicy .gt_indent_5 {
+##   text-indent: 25px;
+## }
+## 
+## #ytdgtrwicy .katex-display {
+##   display: inline-flex !important;
+##   margin-bottom: 0.75em !important;
+## }
+## 
+## #ytdgtrwicy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+##   height: 0px !important;
+## }
+## </style>
+##   <table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+##   <thead>
+##     <tr class="gt_col_headings">
+##       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="&lt;span class='gt_from_md'&gt;&lt;strong&gt;Characteristic&lt;/strong&gt;&lt;/span&gt;"><span class='gt_from_md'><strong>Characteristic</strong></span></th>
+##       <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="&lt;span class='gt_from_md'&gt;&lt;strong&gt;0&lt;/strong&gt;&lt;br /&gt;&#10;N = 549&lt;/span&gt;&lt;span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/span&gt;"><span class='gt_from_md'><strong>0</strong><br />
+## N = 549</span><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;"><sup>1</sup></span></th>
+##       <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="&lt;span class='gt_from_md'&gt;&lt;strong&gt;1&lt;/strong&gt;&lt;br /&gt;&#10;N = 342&lt;/span&gt;&lt;span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/span&gt;"><span class='gt_from_md'><strong>1</strong><br />
+## N = 342</span><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;"><sup>1</sup></span></th>
+##     </tr>
+##   </thead>
+##   <tbody class="gt_table_body">
+##     <tr><td headers="label" class="gt_row gt_left">Sex</td>
+## <td headers="stat_1" class="gt_row gt_center"><br /></td>
+## <td headers="stat_2" class="gt_row gt_center"><br /></td></tr>
+##     <tr><td headers="label" class="gt_row gt_left">    female</td>
+## <td headers="stat_1" class="gt_row gt_center">81 (15%)</td>
+## <td headers="stat_2" class="gt_row gt_center">233 (68%)</td></tr>
+##     <tr><td headers="label" class="gt_row gt_left">    male</td>
+## <td headers="stat_1" class="gt_row gt_center">468 (85%)</td>
+## <td headers="stat_2" class="gt_row gt_center">109 (32%)</td></tr>
+##   </tbody>
+##   
+##   <tfoot class="gt_footnotes">
+##     <tr>
+##       <td class="gt_footnote" colspan="3"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;"><sup>1</sup></span> <span class='gt_from_md'>n (%)</span></td>
+##     </tr>
+##   </tfoot>
+## </table>
+## </div>
+\end{verbatim}
+
+\#Show the table1
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{table2 }\OtherTok{\textless{}{-}}\NormalTok{ train }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(Survived, Sex, Age) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(Survived}\SpecialCharTok{==}\DecValTok{1}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(Age))}
+\end{Highlighting}
+\end{Shaded}
+
+\#Store the select column in table2 (selected only the survived and not
+NA in their ages)
+
+Table for show only the Age and Sex of the servived
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(table2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     Survived    Sex   Age
+## 1          1 female 38.00
+## 2          1 female 26.00
+## 3          1 female 35.00
+## 4          1 female 27.00
+## 5          1 female 14.00
+## 6          1 female  4.00
+## 7          1 female 58.00
+## 8          1 female 55.00
+## 9          1   male 34.00
+## 10         1 female 15.00
+## 11         1   male 28.00
+## 12         1 female 38.00
+## 13         1 female 14.00
+## 14         1 female  3.00
+## 15         1 female 19.00
+## 16         1 female 49.00
+## 17         1 female 29.00
+## 18         1 female 21.00
+## 19         1 female  5.00
+## 20         1 female 38.00
+## 21         1 female 29.00
+## 22         1 female 17.00
+## 23         1   male 32.00
+## 24         1   male  0.83
+## 25         1 female 30.00
+## 26         1   male 29.00
+## 27         1 female 17.00
+## 28         1 female 33.00
+## 29         1 female 23.00
+## 30         1   male 23.00
+## 31         1 female 34.00
+## 32         1 female 21.00
+## 33         1 female 32.50
+## 34         1   male 12.00
+## 35         1   male 24.00
+## 36         1 female 29.00
+## 37         1 female 19.00
+## 38         1 female 22.00
+## 39         1 female 24.00
+## 40         1   male 27.00
+## 41         1 female 22.00
+## 42         1 female 16.00
+## 43         1 female 40.00
+## 44         1   male  9.00
+## 45         1 female  1.00
+## 46         1   male  1.00
+## 47         1 female  4.00
+## 48         1   male 45.00
+## 49         1 female 32.00
+## 50         1 female 19.00
+## 51         1   male  3.00
+## 52         1 female 44.00
+## 53         1 female 58.00
+## 54         1   male 18.00
+## 55         1   male 26.00
+## 56         1 female 16.00
+## 57         1   male 40.00
+## 58         1 female 35.00
+## 59         1 female 31.00
+## 60         1 female 27.00
+## 61         1 female 32.00
+## 62         1   male 16.00
+## 63         1   male 38.00
+## 64         1   male 19.00
+## 65         1 female 35.00
+## 66         1 female  5.00
+## 67         1 female  8.00
+## 68         1 female 24.00
+## 69         1   male 37.00
+## 70         1 female 29.00
+## 71         1 female 30.00
+## 72         1 female 35.00
+## 73         1 female 50.00
+## 74         1   male  3.00
+## 75         1   male 25.00
+## 76         1 female 58.00
+## 77         1 female 35.00
+## 78         1   male 25.00
+## 79         1 female 41.00
+## 80         1 female 63.00
+## 81         1 female 35.00
+## 82         1   male 19.00
+## 83         1   male 30.00
+## 84         1   male 42.00
+## 85         1 female 22.00
+## 86         1 female 26.00
+## 87         1 female 19.00
+## 88         1 female 50.00
+## 89         1   male  0.92
+## 90         1 female 17.00
+## 91         1 female 30.00
+## 92         1 female 24.00
+## 93         1 female 18.00
+## 94         1 female 26.00
+## 95         1 female 24.00
+## 96         1 female 31.00
+## 97         1 female 40.00
+## 98         1 female 30.00
+## 99         1 female 22.00
+## 100        1 female 36.00
+## 101        1 female 36.00
+## 102        1 female 31.00
+## 103        1 female 16.00
+## 104        1 female 41.00
+## 105        1   male 45.00
+## 106        1   male  2.00
+## 107        1 female 24.00
+## 108        1 female 24.00
+## 109        1 female 40.00
+## 110        1   male  3.00
+## 111        1 female 22.00
+## 112        1 female 60.00
+## 113        1 female 24.00
+## 114        1   male 25.00
+## 115        1 female 22.00
+## 116        1 female 42.00
+## 117        1 female  1.00
+## 118        1 female 35.00
+## 119        1 female 36.00
+## 120        1 female 17.00
+## 121        1   male 36.00
+## 122        1   male 21.00
+## 123        1 female 23.00
+## 124        1 female 24.00
+## 125        1 female 28.00
+## 126        1   male 39.00
+## 127        1   male  3.00
+## 128        1 female 33.00
+## 129        1   male 44.00
+## 130        1 female 34.00
+## 131        1 female 18.00
+## 132        1 female 28.00
+## 133        1 female 19.00
+## 134        1   male 32.00
+## 135        1   male 28.00
+## 136        1 female 42.00
+## 137        1 female 14.00
+## 138        1 female 24.00
+## 139        1 female 45.00
+## 140        1 female 28.00
+## 141        1   male  4.00
+## 142        1 female 13.00
+## 143        1   male 34.00
+## 144        1 female  5.00
+## 145        1   male 52.00
+## 146        1   male 49.00
+## 147        1   male 29.00
+## 148        1 female 50.00
+## 149        1   male 48.00
+## 150        1 female  0.75
+## 151        1 female 33.00
+## 152        1 female 23.00
+## 153        1 female  2.00
+## 154        1 female 63.00
+## 155        1   male 25.00
+## 156        1 female 35.00
+## 157        1   male  9.00
+## 158        1 female 54.00
+## 159        1 female 16.00
+## 160        1 female 33.00
+## 161        1   male 26.00
+## 162        1   male 29.00
+## 163        1   male 36.00
+## 164        1 female 54.00
+## 165        1 female 34.00
+## 166        1 female 36.00
+## 167        1 female 30.00
+## 168        1 female 44.00
+## 169        1 female 50.00
+## 170        1 female  2.00
+## 171        1 female  7.00
+## 172        1 female 30.00
+## 173        1 female 22.00
+## 174        1 female 36.00
+## 175        1   male 32.00
+## 176        1 female 19.00
+## 177        1   male  8.00
+## 178        1   male 17.00
+## 179        1   male 22.00
+## 180        1 female 22.00
+## 181        1 female 48.00
+## 182        1 female 39.00
+## 183        1 female 36.00
+## 184        1   male 32.00
+## 185        1   male 62.00
+## 186        1 female 53.00
+## 187        1   male 36.00
+## 188        1 female 34.00
+## 189        1 female 39.00
+## 190        1   male 32.00
+## 191        1 female 25.00
+## 192        1 female 39.00
+## 193        1 female 18.00
+## 194        1   male 60.00
+## 195        1 female 52.00
+## 196        1   male 49.00
+## 197        1 female 24.00
+## 198        1   male 35.00
+## 199        1   male 27.00
+## 200        1 female 22.00
+## 201        1 female 40.00
+## 202        1 female 24.00
+## 203        1 female  4.00
+## 204        1   male 42.00
+## 205        1   male 20.00
+## 206        1 female 21.00
+## 207        1   male 80.00
+## 208        1   male 32.00
+## 209        1 female 28.00
+## 210        1 female 24.00
+## 211        1 female  0.75
+## 212        1   male 48.00
+## 213        1   male 56.00
+## 214        1 female 23.00
+## 215        1 female 18.00
+## 216        1   male 50.00
+## 217        1   male 20.00
+## 218        1 female 40.00
+## 219        1   male 31.00
+## 220        1 female 18.00
+## 221        1   male 36.00
+## 222        1   male 27.00
+## 223        1 female 15.00
+## 224        1   male 31.00
+## 225        1 female  4.00
+## 226        1 female 18.00
+## 227        1   male 35.00
+## 228        1 female 45.00
+## 229        1   male 42.00
+## 230        1 female 22.00
+## 231        1 female 24.00
+## 232        1   male 48.00
+## 233        1 female 38.00
+## 234        1 female 27.00
+## 235        1 female  6.00
+## 236        1   male 27.00
+## 237        1 female 30.00
+## 238        1 female 29.00
+## 239        1   male 35.00
+## 240        1 female 21.00
+## 241        1   male 31.00
+## 242        1 female 30.00
+## 243        1 female  4.00
+## 244        1   male  6.00
+## 245        1 female 48.00
+## 246        1   male  0.67
+## 247        1 female 33.00
+## 248        1   male 20.00
+## 249        1 female 36.00
+## 250        1 female 51.00
+## 251        1 female 54.00
+## 252        1 female  5.00
+## 253        1 female 43.00
+## 254        1 female 13.00
+## 255        1 female 17.00
+## 256        1 female 18.00
+## 257        1   male  1.00
+## 258        1 female 49.00
+## 259        1 female 31.00
+## 260        1 female 31.00
+## 261        1   male 11.00
+## 262        1   male  0.42
+## 263        1   male 27.00
+## 264        1 female 33.00
+## 265        1 female 52.00
+## 266        1   male 27.00
+## 267        1 female 27.00
+## 268        1   male  1.00
+## 269        1 female 62.00
+## 270        1 female 15.00
+## 271        1   male  0.83
+## 272        1 female 39.00
+## 273        1   male 32.00
+## 274        1 female 30.00
+## 275        1 female 16.00
+## 276        1 female 18.00
+## 277        1 female 45.00
+## 278        1   male 51.00
+## 279        1 female 24.00
+## 280        1 female 48.00
+## 281        1 female 42.00
+## 282        1 female 27.00
+## 283        1   male  4.00
+## 284        1 female 47.00
+## 285        1 female 28.00
+## 286        1 female 15.00
+## 287        1 female 56.00
+## 288        1 female 25.00
+## 289        1 female 19.00
+## 290        1   male 26.00
+\end{verbatim}
+
+\#shoe the table2
+
+Table show number between sex and age of survived.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{survived\_data }\OtherTok{\textless{}{-}}\NormalTok{ table2}\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(Sex,Age)}\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{tbl\_summary}\NormalTok{(}\AttributeTok{by =}\NormalTok{ Sex)}
+
+
+\NormalTok{sumdata }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{Min =} \FunctionTok{min}\NormalTok{(table2}\SpecialCharTok{$}\NormalTok{Age),}
+  \AttributeTok{Max =} \FunctionTok{max}\NormalTok{(table2}\SpecialCharTok{$}\NormalTok{Age),}
+  \AttributeTok{Mean =} \FunctionTok{mean}\NormalTok{(table2}\SpecialCharTok{$}\NormalTok{Age),}
+  \AttributeTok{Median =} \FunctionTok{median}\NormalTok{(table2}\SpecialCharTok{$}\NormalTok{Age),}
+  \AttributeTok{SD =} \FunctionTok{sd}\NormalTok{(table2}\SpecialCharTok{$}\NormalTok{Age),}
+  \AttributeTok{IQR =} \FunctionTok{IQR}\NormalTok{(table2}\SpecialCharTok{$}\NormalTok{Age)}
+\NormalTok{)}
+
+\FunctionTok{print}\NormalTok{(survived\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## <div id="kjiachgkmm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+##   <style>#kjiachgkmm table {
+##   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+##   -webkit-font-smoothing: antialiased;
+##   -moz-osx-font-smoothing: grayscale;
+## }
+## 
+## #kjiachgkmm thead, #kjiachgkmm tbody, #kjiachgkmm tfoot, #kjiachgkmm tr, #kjiachgkmm td, #kjiachgkmm th {
+##   border-style: none;
+## }
+## 
+## #kjiachgkmm p {
+##   margin: 0;
+##   padding: 0;
+## }
+## 
+## #kjiachgkmm .gt_table {
+##   display: table;
+##   border-collapse: collapse;
+##   line-height: normal;
+##   margin-left: auto;
+##   margin-right: auto;
+##   color: #333333;
+##   font-size: 16px;
+##   font-weight: normal;
+##   font-style: normal;
+##   background-color: #FFFFFF;
+##   width: auto;
+##   border-top-style: solid;
+##   border-top-width: 2px;
+##   border-top-color: #A8A8A8;
+##   border-right-style: none;
+##   border-right-width: 2px;
+##   border-right-color: #D3D3D3;
+##   border-bottom-style: solid;
+##   border-bottom-width: 2px;
+##   border-bottom-color: #A8A8A8;
+##   border-left-style: none;
+##   border-left-width: 2px;
+##   border-left-color: #D3D3D3;
+## }
+## 
+## #kjiachgkmm .gt_caption {
+##   padding-top: 4px;
+##   padding-bottom: 4px;
+## }
+## 
+## #kjiachgkmm .gt_title {
+##   color: #333333;
+##   font-size: 125%;
+##   font-weight: initial;
+##   padding-top: 4px;
+##   padding-bottom: 4px;
+##   padding-left: 5px;
+##   padding-right: 5px;
+##   border-bottom-color: #FFFFFF;
+##   border-bottom-width: 0;
+## }
+## 
+## #kjiachgkmm .gt_subtitle {
+##   color: #333333;
+##   font-size: 85%;
+##   font-weight: initial;
+##   padding-top: 3px;
+##   padding-bottom: 5px;
+##   padding-left: 5px;
+##   padding-right: 5px;
+##   border-top-color: #FFFFFF;
+##   border-top-width: 0;
+## }
+## 
+## #kjiachgkmm .gt_heading {
+##   background-color: #FFFFFF;
+##   text-align: center;
+##   border-bottom-color: #FFFFFF;
+##   border-left-style: none;
+##   border-left-width: 1px;
+##   border-left-color: #D3D3D3;
+##   border-right-style: none;
+##   border-right-width: 1px;
+##   border-right-color: #D3D3D3;
+## }
+## 
+## #kjiachgkmm .gt_bottom_border {
+##   border-bottom-style: solid;
+##   border-bottom-width: 2px;
+##   border-bottom-color: #D3D3D3;
+## }
+## 
+## #kjiachgkmm .gt_col_headings {
+##   border-top-style: solid;
+##   border-top-width: 2px;
+##   border-top-color: #D3D3D3;
+##   border-bottom-style: solid;
+##   border-bottom-width: 2px;
+##   border-bottom-color: #D3D3D3;
+##   border-left-style: none;
+##   border-left-width: 1px;
+##   border-left-color: #D3D3D3;
+##   border-right-style: none;
+##   border-right-width: 1px;
+##   border-right-color: #D3D3D3;
+## }
+## 
+## #kjiachgkmm .gt_col_heading {
+##   color: #333333;
+##   background-color: #FFFFFF;
+##   font-size: 100%;
+##   font-weight: normal;
+##   text-transform: inherit;
+##   border-left-style: none;
+##   border-left-width: 1px;
+##   border-left-color: #D3D3D3;
+##   border-right-style: none;
+##   border-right-width: 1px;
+##   border-right-color: #D3D3D3;
+##   vertical-align: bottom;
+##   padding-top: 5px;
+##   padding-bottom: 6px;
+##   padding-left: 5px;
+##   padding-right: 5px;
+##   overflow-x: hidden;
+## }
+## 
+## #kjiachgkmm .gt_column_spanner_outer {
+##   color: #333333;
+##   background-color: #FFFFFF;
+##   font-size: 100%;
+##   font-weight: normal;
+##   text-transform: inherit;
+##   padding-top: 0;
+##   padding-bottom: 0;
+##   padding-left: 4px;
+##   padding-right: 4px;
+## }
+## 
+## #kjiachgkmm .gt_column_spanner_outer:first-child {
+##   padding-left: 0;
+## }
+## 
+## #kjiachgkmm .gt_column_spanner_outer:last-child {
+##   padding-right: 0;
+## }
+## 
+## #kjiachgkmm .gt_column_spanner {
+##   border-bottom-style: solid;
+##   border-bottom-width: 2px;
+##   border-bottom-color: #D3D3D3;
+##   vertical-align: bottom;
+##   padding-top: 5px;
+##   padding-bottom: 5px;
+##   overflow-x: hidden;
+##   display: inline-block;
+##   width: 100%;
+## }
+## 
+## #kjiachgkmm .gt_spanner_row {
+##   border-bottom-style: hidden;
+## }
+## 
+## #kjiachgkmm .gt_group_heading {
+##   padding-top: 8px;
+##   padding-bottom: 8px;
+##   padding-left: 5px;
+##   padding-right: 5px;
+##   color: #333333;
+##   background-color: #FFFFFF;
+##   font-size: 100%;
+##   font-weight: initial;
+##   text-transform: inherit;
+##   border-top-style: solid;
+##   border-top-width: 2px;
+##   border-top-color: #D3D3D3;
+##   border-bottom-style: solid;
+##   border-bottom-width: 2px;
+##   border-bottom-color: #D3D3D3;
+##   border-left-style: none;
+##   border-left-width: 1px;
+##   border-left-color: #D3D3D3;
+##   border-right-style: none;
+##   border-right-width: 1px;
+##   border-right-color: #D3D3D3;
+##   vertical-align: middle;
+##   text-align: left;
+## }
+## 
+## #kjiachgkmm .gt_empty_group_heading {
+##   padding: 0.5px;
+##   color: #333333;
+##   background-color: #FFFFFF;
+##   font-size: 100%;
+##   font-weight: initial;
+##   border-top-style: solid;
+##   border-top-width: 2px;
+##   border-top-color: #D3D3D3;
+##   border-bottom-style: solid;
+##   border-bottom-width: 2px;
+##   border-bottom-color: #D3D3D3;
+##   vertical-align: middle;
+## }
+## 
+## #kjiachgkmm .gt_from_md > :first-child {
+##   margin-top: 0;
+## }
+## 
+## #kjiachgkmm .gt_from_md > :last-child {
+##   margin-bottom: 0;
+## }
+## 
+## #kjiachgkmm .gt_row {
+##   padding-top: 8px;
+##   padding-bottom: 8px;
+##   padding-left: 5px;
+##   padding-right: 5px;
+##   margin: 10px;
+##   border-top-style: solid;
+##   border-top-width: 1px;
+##   border-top-color: #D3D3D3;
+##   border-left-style: none;
+##   border-left-width: 1px;
+##   border-left-color: #D3D3D3;
+##   border-right-style: none;
+##   border-right-width: 1px;
+##   border-right-color: #D3D3D3;
+##   vertical-align: middle;
+##   overflow-x: hidden;
+## }
+## 
+## #kjiachgkmm .gt_stub {
+##   color: #333333;
+##   background-color: #FFFFFF;
+##   font-size: 100%;
+##   font-weight: initial;
+##   text-transform: inherit;
+##   border-right-style: solid;
+##   border-right-width: 2px;
+##   border-right-color: #D3D3D3;
+##   padding-left: 5px;
+##   padding-right: 5px;
+## }
+## 
+## #kjiachgkmm .gt_stub_row_group {
+##   color: #333333;
+##   background-color: #FFFFFF;
+##   font-size: 100%;
+##   font-weight: initial;
+##   text-transform: inherit;
+##   border-right-style: solid;
+##   border-right-width: 2px;
+##   border-right-color: #D3D3D3;
+##   padding-left: 5px;
+##   padding-right: 5px;
+##   vertical-align: top;
+## }
+## 
+## #kjiachgkmm .gt_row_group_first td {
+##   border-top-width: 2px;
+## }
+## 
+## #kjiachgkmm .gt_row_group_first th {
+##   border-top-width: 2px;
+## }
+## 
+## #kjiachgkmm .gt_summary_row {
+##   color: #333333;
+##   background-color: #FFFFFF;
+##   text-transform: inherit;
+##   padding-top: 8px;
+##   padding-bottom: 8px;
+##   padding-left: 5px;
+##   padding-right: 5px;
+## }
+## 
+## #kjiachgkmm .gt_first_summary_row {
+##   border-top-style: solid;
+##   border-top-color: #D3D3D3;
+## }
+## 
+## #kjiachgkmm .gt_first_summary_row.thick {
+##   border-top-width: 2px;
+## }
+## 
+## #kjiachgkmm .gt_last_summary_row {
+##   padding-top: 8px;
+##   padding-bottom: 8px;
+##   padding-left: 5px;
+##   padding-right: 5px;
+##   border-bottom-style: solid;
+##   border-bottom-width: 2px;
+##   border-bottom-color: #D3D3D3;
+## }
+## 
+## #kjiachgkmm .gt_grand_summary_row {
+##   color: #333333;
+##   background-color: #FFFFFF;
+##   text-transform: inherit;
+##   padding-top: 8px;
+##   padding-bottom: 8px;
+##   padding-left: 5px;
+##   padding-right: 5px;
+## }
+## 
+## #kjiachgkmm .gt_first_grand_summary_row {
+##   padding-top: 8px;
+##   padding-bottom: 8px;
+##   padding-left: 5px;
+##   padding-right: 5px;
+##   border-top-style: double;
+##   border-top-width: 6px;
+##   border-top-color: #D3D3D3;
+## }
+## 
+## #kjiachgkmm .gt_last_grand_summary_row_top {
+##   padding-top: 8px;
+##   padding-bottom: 8px;
+##   padding-left: 5px;
+##   padding-right: 5px;
+##   border-bottom-style: double;
+##   border-bottom-width: 6px;
+##   border-bottom-color: #D3D3D3;
+## }
+## 
+## #kjiachgkmm .gt_striped {
+##   background-color: rgba(128, 128, 128, 0.05);
+## }
+## 
+## #kjiachgkmm .gt_table_body {
+##   border-top-style: solid;
+##   border-top-width: 2px;
+##   border-top-color: #D3D3D3;
+##   border-bottom-style: solid;
+##   border-bottom-width: 2px;
+##   border-bottom-color: #D3D3D3;
+## }
+## 
+## #kjiachgkmm .gt_footnotes {
+##   color: #333333;
+##   background-color: #FFFFFF;
+##   border-bottom-style: none;
+##   border-bottom-width: 2px;
+##   border-bottom-color: #D3D3D3;
+##   border-left-style: none;
+##   border-left-width: 2px;
+##   border-left-color: #D3D3D3;
+##   border-right-style: none;
+##   border-right-width: 2px;
+##   border-right-color: #D3D3D3;
+## }
+## 
+## #kjiachgkmm .gt_footnote {
+##   margin: 0px;
+##   font-size: 90%;
+##   padding-top: 4px;
+##   padding-bottom: 4px;
+##   padding-left: 5px;
+##   padding-right: 5px;
+## }
+## 
+## #kjiachgkmm .gt_sourcenotes {
+##   color: #333333;
+##   background-color: #FFFFFF;
+##   border-bottom-style: none;
+##   border-bottom-width: 2px;
+##   border-bottom-color: #D3D3D3;
+##   border-left-style: none;
+##   border-left-width: 2px;
+##   border-left-color: #D3D3D3;
+##   border-right-style: none;
+##   border-right-width: 2px;
+##   border-right-color: #D3D3D3;
+## }
+## 
+## #kjiachgkmm .gt_sourcenote {
+##   font-size: 90%;
+##   padding-top: 4px;
+##   padding-bottom: 4px;
+##   padding-left: 5px;
+##   padding-right: 5px;
+## }
+## 
+## #kjiachgkmm .gt_left {
+##   text-align: left;
+## }
+## 
+## #kjiachgkmm .gt_center {
+##   text-align: center;
+## }
+## 
+## #kjiachgkmm .gt_right {
+##   text-align: right;
+##   font-variant-numeric: tabular-nums;
+## }
+## 
+## #kjiachgkmm .gt_font_normal {
+##   font-weight: normal;
+## }
+## 
+## #kjiachgkmm .gt_font_bold {
+##   font-weight: bold;
+## }
+## 
+## #kjiachgkmm .gt_font_italic {
+##   font-style: italic;
+## }
+## 
+## #kjiachgkmm .gt_super {
+##   font-size: 65%;
+## }
+## 
+## #kjiachgkmm .gt_footnote_marks {
+##   font-size: 75%;
+##   vertical-align: 0.4em;
+##   position: initial;
+## }
+## 
+## #kjiachgkmm .gt_asterisk {
+##   font-size: 100%;
+##   vertical-align: 0;
+## }
+## 
+## #kjiachgkmm .gt_indent_1 {
+##   text-indent: 5px;
+## }
+## 
+## #kjiachgkmm .gt_indent_2 {
+##   text-indent: 10px;
+## }
+## 
+## #kjiachgkmm .gt_indent_3 {
+##   text-indent: 15px;
+## }
+## 
+## #kjiachgkmm .gt_indent_4 {
+##   text-indent: 20px;
+## }
+## 
+## #kjiachgkmm .gt_indent_5 {
+##   text-indent: 25px;
+## }
+## 
+## #kjiachgkmm .katex-display {
+##   display: inline-flex !important;
+##   margin-bottom: 0.75em !important;
+## }
+## 
+## #kjiachgkmm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+##   height: 0px !important;
+## }
+## </style>
+##   <table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+##   <thead>
+##     <tr class="gt_col_headings">
+##       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="&lt;span class='gt_from_md'&gt;&lt;strong&gt;Characteristic&lt;/strong&gt;&lt;/span&gt;"><span class='gt_from_md'><strong>Characteristic</strong></span></th>
+##       <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="&lt;span class='gt_from_md'&gt;&lt;strong&gt;female&lt;/strong&gt;&lt;br /&gt;&#10;N = 197&lt;/span&gt;&lt;span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/span&gt;"><span class='gt_from_md'><strong>female</strong><br />
+## N = 197</span><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;"><sup>1</sup></span></th>
+##       <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="&lt;span class='gt_from_md'&gt;&lt;strong&gt;male&lt;/strong&gt;&lt;br /&gt;&#10;N = 93&lt;/span&gt;&lt;span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/span&gt;"><span class='gt_from_md'><strong>male</strong><br />
+## N = 93</span><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;"><sup>1</sup></span></th>
+##     </tr>
+##   </thead>
+##   <tbody class="gt_table_body">
+##     <tr><td headers="label" class="gt_row gt_left">Age</td>
+## <td headers="stat_1" class="gt_row gt_center">28 (19, 38)</td>
+## <td headers="stat_2" class="gt_row gt_center">28 (18, 36)</td></tr>
+##   </tbody>
+##   
+##   <tfoot class="gt_footnotes">
+##     <tr>
+##       <td class="gt_footnote" colspan="3"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height: 0;"><sup>1</sup></span> <span class='gt_from_md'>Median (Q1, Q3)</span></td>
+##     </tr>
+##   </tfoot>
+## </table>
+## </div>
+\end{verbatim}
+
+\#Collect the Sex and age value and calculate.
+
+\#Calculate min,max,mean,median,sd,iqr and store.
+
+This table show the information about age of survived between the female
+and male. Use the Median to calculate the group of age that can
+survived.The median form female is equal to 28 and it equal to male. The
+first Quantile is 19 that slightly more then male that 18. Also the
+value of third Quantile from female still more than meal equal to 2.
+Although, some number of survived have been removed before use to
+calculate because of value of age is NA.
+
+Number of Calculate Age of survive
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{kable}\NormalTok{(sumdata)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}rrrrrr@{}}
+\toprule\noalign{}
+Min & Max & Mean & Median & SD & IQR \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0.42 & 80 & 28.34369 & 28 & 14.95095 & 17 \\
+\end{longtable}
+
+\#Show the table of sumdata in the RMarkdown
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Quantile }\OtherTok{=} \FunctionTok{quantile}\NormalTok{(table2}\SpecialCharTok{$}\NormalTok{Age)}
+\FunctionTok{kable}\NormalTok{(Quantile, }\AttributeTok{caption =} \StringTok{"Quantile of their Age"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lr@{}}
+\caption{Quantile of their Age}\tabularnewline
+\toprule\noalign{}
+& x \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+& x \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+0\% & 0.42 \\
+25\% & 19.00 \\
+50\% & 28.00 \\
+75\% & 36.00 \\
+100\% & 80.00 \\
+\end{longtable}
+
+\#calcolate and show each of \% of Quantile like 0 25 50 75 and 100
+
+This is the plot graph for Age and sex of the titanic data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{qplot}\NormalTok{(}\FunctionTok{factor}\NormalTok{(table2}\SpecialCharTok{$}\NormalTok{Sex),table2}\SpecialCharTok{$}\NormalTok{Age, }\AttributeTok{data =}\NormalTok{ table2, }\AttributeTok{geom =} \FunctionTok{c}\NormalTok{(}\StringTok{"boxplot"}\NormalTok{,}\StringTok{"jitter"}\NormalTok{), }\AttributeTok{fill =}\NormalTok{Sex, }\AttributeTok{main=} \StringTok{"graph"}\NormalTok{, }\AttributeTok{xlab =} \StringTok{"sex"}\NormalTok{ ,}\AttributeTok{ylab =} \StringTok{"age"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: `qplot()` was deprecated in ggplot2 3.4.0.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
+## generated.
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Use of `table2$Sex` is discouraged.
+## i Use `Sex` instead.
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Use of `table2$Age` is discouraged.
+## i Use `Age` instead.
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Use of `table2$Sex` is discouraged.
+## i Use `Sex` instead.
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: Use of `table2$Age` is discouraged.
+## i Use `Age` instead.
+\end{verbatim}
+
+\includegraphics{Assignment2_files/figure-latex/unnamed-chunk-10-1.pdf}
+\#plot the number of Survived and age devided by sex.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{ (table2, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{as.factor}\NormalTok{(Sex), }\AttributeTok{y =}\NormalTok{ Age)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_boxplot}\NormalTok{(}\AttributeTok{outlier.colour =} \StringTok{"red"}\NormalTok{, }\AttributeTok{outlier.shape =} \DecValTok{7}\NormalTok{, }\AttributeTok{outlier.size =} \DecValTok{2}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Sex"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Age"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Outliers of member in sex and age bloxplot"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Assignment2_files/figure-latex/unnamed-chunk-11-1.pdf}
+
+\#plot the out liner with the red colour to show the member that out of
+the range.
+
+\end{document}

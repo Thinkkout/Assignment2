@@ -1,0 +1,127 @@
+---
+title: "Assignment2.rmd"
+author: "Phanisa"
+date: "2024-09-15"
+output:
+  html_document:
+    df_print: paged
+  word_document: default
+  pdf_document: default
+---
+
+
+```{r}
+library(readr)
+library(dplyr)
+library(gtsummary)
+library(knitr)
+library(ggplot2)
+train <- read.csv("train.csv")
+
+
+```
+#This is the command for call every package that you need to use for this code
+#command for read the csv file and store in train
+
+
+This is an example of Titanic data
+```{r}
+print(head(train))#show the top 10 lines of train data frame
+
+```
+
+
+```{r}
+table1 <- train %>%
+  select(Survived, Sex) %>%
+  tbl_summary(by = Survived)
+
+```
+#store the select column in the table1 as table platform and calculate form gtsummary function
+
+#use as pipe for continues input/output"
+Table for show selected of survived sex column
+```{r}
+print(table1)
+
+```
+#Show the table1
+
+
+  
+```{r}
+table2 <- train %>%
+  select(Survived, Sex, Age) %>%
+  filter(Survived==1) %>%
+  filter(!is.na(Age))
+
+
+```
+#Store the select column in table2 (selected only the survived and not NA in their ages)
+
+Table for show only the Age and Sex of the servived
+```{r}
+print(table2)
+
+```
+#shoe the table2
+
+Table show number between sex and age of survived.
+```{r}
+survived_data <- table2%>%
+  select(Sex,Age)%>%
+  tbl_summary(by = Sex)
+
+
+sumdata <- data.frame(
+  Min = min(table2$Age),
+  Max = max(table2$Age),
+  Mean = mean(table2$Age),
+  Median = median(table2$Age),
+  SD = sd(table2$Age),
+  IQR = IQR(table2$Age)
+)
+
+print(survived_data)
+
+```
+#Collect the Sex and age value and calculate.
+
+#Calculate min,max,mean,median,sd,iqr and store.
+
+
+This table show the information about age of survived between the female and male. Use the Median to calculate the group of age that can survived.The median form female is equal to 28 and it equal to male. The first Quantile is 19 that slightly more then male that 18. Also the value of third Quantile from female still more than meal equal to 2. Although, some number of survived have been removed before use to calculate because of value of age is NA.
+
+Number of Calculate Age of survive
+```{r}
+kable(sumdata)
+
+```
+#Show the table of sumdata in the RMarkdown
+
+```{r}
+
+Quantile = quantile(table2$Age)
+kable(Quantile, caption = "Quantile of their Age")
+
+```
+#calcolate and show each of % of Quantile like 0 25 50 75 and 100
+
+
+This is the plot graph for Age and sex of the titanic data.
+```{r}
+qplot(factor(table2$Sex),table2$Age, data = table2, geom = c("boxplot","jitter"), fill =Sex, main= "graph", xlab = "sex" ,ylab = "age")
+      
+```
+#plot the number of Survived and age devided by sex.
+```{r}
+ggplot (table2, aes(x = as.factor(Sex), y = Age)) +
+  geom_boxplot(outlier.colour = "red", outlier.shape = 7, outlier.size = 2) +
+  labs(x = "Sex", y = "Age", title = "Outliers of member in sex and age bloxplot")
+
+```
+
+
+
+#plot the out liner with the red colour to show the member that out of the range.
+
