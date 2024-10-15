@@ -1,2 +1,2 @@
 # Assighment2
-You can run the r project with rmd in floder report.
+Phanisa Butsiri 6737935
