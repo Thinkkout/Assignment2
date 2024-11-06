@@ -16,7 +16,7 @@ library(dplyr)
 library(gtsummary)
 library(knitr)
 library(ggplot2)
-train <- read.csv("../assignment2/data/train.csv")
+train <- read.csv("../data/train.csv")
 
 
 ```
